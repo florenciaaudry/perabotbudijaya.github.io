@@ -597,8 +597,8 @@ img {
 }
 
 .product-card .thumb {
-  aspect-ratio: 4 / 3;      
-  height: auto;             
+  aspect-ratio: 4 / 3;
+  height: auto;
   background: #e5e7eb;
   position: relative;
   background-size: cover;
@@ -616,6 +616,21 @@ img {
   cursor: pointer;
   background: rgba(255, 255, 255, 0.98);
   box-shadow: 0 12px 26px rgba(15, 23, 42, 0.22);
+}
+
+/* state favorit */
+.product-card .fav[aria-pressed="true"] {
+  background: #fee2e2;
+  color: #b91c1c;
+  border: 1px solid #fecaca;
+}
+
+.product-card .fav[aria-pressed="true"]:hover {
+  background: #fecaca;
+}
+
+.product-card .fav[aria-pressed="false"]:hover {
+  background: #f3f4f6;
 }
 
 .product-card .info {
@@ -659,9 +674,11 @@ img {
   align-items: center;
 }
 
+/* di layar sangat lebar, kartu diperkecil dengan 4 kolom */
 @media (min-width: 1200px) {
   .product-grid,
   .grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     max-width: 1040px;
     margin-inline: auto;
   }
@@ -1058,7 +1075,25 @@ img {
   .section {
     padding: 32px 0;
   }
-  
+
+  /* HEADER MOBILE – brand kiri, actions kanan, menu baris kedua */
+  .nav {
+    padding: 8px 0 10px;
+    height: auto;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-rows: auto auto;
+    align-items: center;
+    row-gap: 6px;
+    column-gap: 8px;
+  }
+
+  .brand {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    justify-content: flex-start;
+  }
+
   .brand .icon {
     width: 22px;
     height: 22px;
@@ -1070,6 +1105,14 @@ img {
 
   .brand-sub {
     font-size: 10px;
+  }
+
+  .nav-actions {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    display: flex;
+    justify-content: flex-end;
+    gap: 6px;
   }
 
   .nav-actions .btn {
@@ -1092,37 +1135,6 @@ img {
     width: 16px;
     height: 16px;
   }
-}
-  .nav {
-    padding: 8px 0 10px;
-    height: auto;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    grid-template-rows: auto auto;
-    align-items: center;
-    row-gap: 6px;
-    column-gap: 8px;
-  }
-
-  .brand {
-    grid-column: 1 / 2;
-    grid-row: 1 / 2;
-    justify-content: flex-start;
-  }
-
-  .nav-actions {
-    grid-column: 2 / 3;
-    grid-row: 1 / 2;
-    display: flex;
-    justify-content: flex-end;
-    gap: 6px;
-  }
-
-  .nav-actions .btn {
-    padding: 7px 12px;
-    font-size: 12px;
-    min-height: 36px;
-  }
 
   .nav-links {
     grid-column: 1 / 3;
@@ -1134,6 +1146,8 @@ img {
     gap: 12px;
     margin-top: 2px;
   }
+
+  /* HERO MOBILE */
 
   .hero {
     gap: 20px;
@@ -1177,6 +1191,8 @@ img {
     grid-template-columns: minmax(0, 1fr);
   }
 
+  /* GRID PRODUK MOBILE */
+
   .product-grid,
   .grid {
     grid-template-columns: minmax(0, 1fr);
@@ -1210,26 +1226,7 @@ img {
     justify-content: flex-start;
   }
 
-
-.product-card .fav { /* default abu */
-}
-
-.product-card .fav[aria-pressed="true"] {
-  background: #fee2e2;
-  color: #b91c1c;           
-  border: 1px solid #fecaca;
-}
-
-.product-card .fav[aria-pressed="true"]:hover {
-  background: #fecaca;
-}
-
-.product-card .fav[aria-pressed="false"]:hover {
-  background: #f3f4f6;
-}
-
-.drawer .panel {
+  .drawer .panel {
     width: min(360px, 100%);
-}
-
+  }
 }
